@@ -16,6 +16,7 @@ import com.example.tecchstore.db.AppDatabase
 import com.example.tecchstore.db.model.car.CarEntity
 import com.example.tecchstore.db.model.product.ProductEntity
 import com.google.android.material.button.MaterialButton
+import java.util.Objects
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -75,6 +76,16 @@ class DetailFragment : Fragment() {
         }
 
         materialButtonSave.setOnClickListener {
+            db.carDao().findById(producto.code)?.let {
+                if (editTextCode.text.toString() != producto.code) {
+
+
+                    db.carDao().update(it.apply { this.code = editTextCode.text.toString() })
+                }
+            }
+
+
+
             db.productDao().update(producto.apply {
                 description = editTextDescription.text.toString()
                 code = editTextCode.text.toString()
@@ -93,6 +104,7 @@ class DetailFragment : Fragment() {
         materialButtonAdd.isEnabled = !isin
         materialButtonAdd.setOnClickListener {
             db.carDao().upsert(CarEntity(code = producto.code))
+
             Toast.makeText(context, "El producto ha sido agregado al carrito", Toast.LENGTH_LONG).show()
             materialButtonAdd.isEnabled = false
         }

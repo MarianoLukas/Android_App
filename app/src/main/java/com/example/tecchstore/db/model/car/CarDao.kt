@@ -3,6 +3,7 @@ package com.example.tecchstore.db.model.car
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Query
+import androidx.room.Update
 import androidx.room.Upsert
 
 @Dao
@@ -18,4 +19,7 @@ interface CarDao {
 
     @Upsert
     fun upsert(car: CarEntity)
+
+    @Update
+    fun update(car: CarEntity)
 }

@@ -13,5 +13,5 @@ import androidx.room.PrimaryKey
 )
 data class CarEntity(
     @ColumnInfo(name = "id") @PrimaryKey val id: Int? = null,
-    @ColumnInfo(name = "code") val code: String
+    @ColumnInfo(name = "code") var code: String
 )
