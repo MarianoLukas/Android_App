@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/mainFragment2">
+    <fragment
+        android:id="@+id/mainFragment2"
+        android:name="com.example.tecchstore.MainFragment"
+        android:label="Principal"
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_mainFragment2_to_detailFragment"
+            app:destination="@id/detailFragment" />
+        <action
+            android:id="@+id/action_mainFragment2_to_choppingCarFragment"
+            app:destination="@id/choppingCarFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.example.tecchstore.DetailFragment"
+        android:label="Detalle"
+        tools:layout="@layout/fragment_detail" />
+    <fragment
+        android:id="@+id/choppingCarFragment"
+        android:name="com.example.tecchstore.ChoppingCarFragment"
+        android:label="Carrito"
+        tools:layout="@layout/fragment_chopping_car" >
+        <action
+            android:id="@+id/action_choppingCarFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
+</navigation>
