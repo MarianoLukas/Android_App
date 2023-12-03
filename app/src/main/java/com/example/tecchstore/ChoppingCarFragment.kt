@@ -9,6 +9,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.ScrollView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.navigation.findNavController
 import com.example.tecchstore.db.AppDatabase
@@ -53,6 +54,12 @@ class ChoppingCarFragment : Fragment() {
                 db.carDao().getAll().forEach {it3 -> db.carDao().delete(db.carDao().findById(it3.code)) }
                 root.findNavController().navigateUp()
                 root.findNavController().navigateUp()
+                Toast.makeText(context, "Los elementos han sido borrados del carrito", Toast.LENGTH_LONG).show()
+            }
+
+        root.findViewById<MaterialButton>(R.id.materialButton_buy)
+            .setOnClickListener {
+                Toast.makeText(context, "Has comprado todos los productos", Toast.LENGTH_LONG).show()
             }
 
         return root

@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.widget.addTextChangedListener
 import androidx.navigation.findNavController
@@ -92,6 +93,7 @@ class DetailFragment : Fragment() {
         materialButtonAdd.isEnabled = !isin
         materialButtonAdd.setOnClickListener {
             db.carDao().upsert(CarEntity(code = producto.code))
+            Toast.makeText(context, "El producto ha sido agregado al carrito", Toast.LENGTH_LONG).show()
             materialButtonAdd.isEnabled = false
         }
 
